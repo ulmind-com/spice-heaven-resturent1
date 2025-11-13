@@ -2,23 +2,41 @@ import { useState, useEffect } from 'react';
 import { Bell, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNotifications } from '@/hooks/use-notifications';
+import { toast } from 'sonner';
 
 export const NotificationBanner = () => {
   const [show, setShow] = useState(false);
-  const { requestPermission, permission, isSupported } = useNotifications();
+  const { requestPermission, permission, isSupported, sendNotification } = useNotifications();
 
   useEffect(() => {
-    // Show banner if notifications are supported and permission is not granted
-    if (isSupported && permission === 'default') {
-      const timer = setTimeout(() => setShow(true), 2000);
-      return () => clearTimeout(timer);
-    }
+    if (!isSupported) return;
+    if (permission !== 'default') return;
+    if (localStorage.getItem('notification_banner_dismissed') === 'true') return;
+
+    const timer = setTimeout(() => setShow(true), 1500);
+    return () => clearTimeout(timer);
   }, [isSupported, permission]);
 
   const handleEnable = async () => {
-    const granted = await requestPermission();
-    if (granted) {
-      setShow(false);
+    try {
+      const granted = await requestPermission();
+      if (granted) {
+        setShow(false);
+        toast.success('Notifications enabled! You\'ll receive updates about deals and your cart.');
+        
+        // Send a test notification immediately
+        setTimeout(() => {
+          sendNotification(
+            '🎉 Notifications Enabled!',
+            'You\'ll now receive updates about daily deals, special offers, and cart reminders!'
+          );
+        }, 1000);
+      } else {
+        toast.error('Notification permission denied. Please enable it in your browser settings.');
+      }
+    } catch (error) {
+      console.error('Error requesting notification permission:', error);
+      toast.error('Failed to enable notifications. Please try again.');
     }
   };
 
