@@ -77,8 +77,8 @@ export const useNotifications = () => {
         const registration = await navigator.serviceWorker.ready;
         await registration.showNotification(title, {
           body,
-          icon: icon || '/favicon.png',
-          badge: '/favicon.png',
+          icon: icon || '/favicon3.png',
+          badge: '/favicon3.png',
           tag: 'food-delivery',
           requireInteraction: false,
           silent: false,
