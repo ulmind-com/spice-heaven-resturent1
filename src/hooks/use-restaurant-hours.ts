@@ -8,7 +8,7 @@ export interface RestaurantHours {
 }
 
 const RESTAURANT_HOURS: RestaurantHours = {
-  openHour: 1,
+  openHour: 11,
   openMinute: 30,
   closeHour: 23,
   closeMinute: 30,
@@ -75,4 +75,5 @@ export const useRestaurantHours = () => {
     openingHours: getOpeningHours(),
     currentTime,
   };
+
 };
