@@ -3,6 +3,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import SearchBar from "./SearchBar";
+import logo from "/favicon3.png"; // Import the logo
 
 import { MenuItem } from "@/data/menuData";
 
@@ -20,9 +21,11 @@ const Navbar = ({ allItems, onItemClick }: NavbarProps) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Maa Lakshmirani Restaurant
-            </h1>
+            <img 
+              src={logo} 
+              alt="Maa Lakshmirani Restaurant" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
