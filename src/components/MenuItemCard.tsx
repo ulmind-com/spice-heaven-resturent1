@@ -33,7 +33,7 @@ import paneerroll from "@/assets/paneerroll.png";
 import lachharoll from "@/assets/lachharoll.png";
 import nmroti from "@/assets/nmroti.png";
 import aluparatha  from "@/assets/aluparatha.png";
-import butternan from "@/assets/butternan.png";
+import butternan from "@/assets/butternan.jpg";
 import tandooriroti from "@/assets/tandooriroti.png";
 import maslakulcha from "@/assets/maslakulcha.png";
 import chickenbriyani from "@/assets/chickenbriyani.png";
